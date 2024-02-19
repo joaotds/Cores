@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exibir Cores</title>
+<style>
+  .caixa-cor {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 10px solid black;
+    float: left; /* Para alinhar as caixas horizontalmente */
+  }
+</style>
+</head>
+<body>
+
+<script>
+  // cada numero corresponde a uma cor
+  function obterNomeCor(numero) {
+    switch(numero) {
+      case 1:
+        return "yellow";
+      case 2:
+        return "blue";
+      case 3:
+        return "black";
+      case 4:
+        return "green";
+      case 5:
+        return "red";
+      case 6:
+        return "purple";
+      case 7:
+        return "grey";
+      case 8:
+        return "brown";
+    }
+  }
+
+  // Função para criar e exibir as divs coloridas
+  function exibirCores() {
+    var container = document.getElementById("container");
+    var larguraJanela = window.innerWidth; // Largura da janela do navegador
+    var larguraCaixa = 120; // Largura da caixa de cor incluindo margens e borda
+    var numCaixasPorLinha = Math.floor(larguraJanela / larguraCaixa); // Calcula quantas caixas cabem por linha
+    for (var i = 1; i <= 8; i++) {
+      var nomeCor = obterNomeCor(i);
+      var caixaCor = document.createElement("div");
+      caixaCor.className = "caixa-cor";
+      caixaCor.style.backgroundColor = nomeCor.toLowerCase(); //define que a cor do quadrado é a do numero dele
+      container.appendChild(caixaCor);
+    }
+    // Adiciona uma div vazia para limpar a flutuação
+    var clearDiv = document.createElement("div");
+    clearDiv.style.clear = "both";
+    container.appendChild(clearDiv);
+  }
+
+  // exibe a função e as cores quando a pagina carrega
+  window.onload = exibirCores;
+</script>
+
+<div id="container"></div>
+
+</body>
+</html>
